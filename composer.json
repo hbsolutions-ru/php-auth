@@ -1,0 +1,21 @@
+{
+    "name": "hbsolutions/php-auth",
+    "description": "A variety of authentication methods and tools for them for a PHP-project or microservice.",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "HBS\\Auth\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "HBS Development Team",
+            "email": "dev.hbsolutions@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require-dev": {
+        "psr/http-message": "1.0.x-dev"
+    }
+}
