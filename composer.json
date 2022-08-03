@@ -15,7 +15,12 @@
         }
     ],
     "minimum-stability": "dev",
+    "require": {
+        "php": "^7.4"
+    },
     "require-dev": {
-        "psr/http-message": "1.0.x-dev"
+        "psr/http-factory": "1.0.x-dev",
+        "psr/http-message": "1.0.x-dev",
+        "psr/log": "^1.1"
     }
 }
