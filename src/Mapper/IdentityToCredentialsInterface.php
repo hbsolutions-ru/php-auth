@@ -11,8 +11,8 @@ interface IdentityToCredentialsInterface
 {
     /**
      * @param IdentityInterface $identity
-     * @param string $type
+     * @param string $credentialsType
      * @return CredentialsInterface
      */
-    public function transform(IdentityInterface $identity, string $type): CredentialsInterface;
+    public function transform(IdentityInterface $identity, string $credentialsType): CredentialsInterface;
 }

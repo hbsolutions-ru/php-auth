@@ -2,7 +2,7 @@
 
 namespace HBS\Auth\Model\Credentials;
 
-class UsernamePassword implements CredentialsInterface
+class UsernamePassword implements UsernamePasswordInterface
 {
     /**
      * @var string
