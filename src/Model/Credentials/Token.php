@@ -2,7 +2,7 @@
 
 namespace HBS\Auth\Model\Credentials;
 
-class Token implements CredentialsInterface
+class Token implements TokenInterface
 {
     /**
      * @var string

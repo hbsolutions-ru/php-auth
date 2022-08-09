@@ -2,6 +2,7 @@
 
 namespace HBS\Auth\Authenticator;
 
+use HBS\Helpers\ObjectHelper;
 use HBS\Auth\{
     Exception\AuthenticationException,
     Mapper\AccountEntityToIdentityInterface,
@@ -58,8 +59,7 @@ class UsernamePasswordAuthenticator implements AuthenticatorInterface
          * Yes, Barbara Liskov won't like it
          * @var $credentials UsernamePasswordInterface
          */
-        $reflectionClass = new \ReflectionClass($credentials);
-        if (!$reflectionClass->implementsInterface(UsernamePasswordInterface::class)) {
+        if (!ObjectHelper::implementsInterface($credentials, UsernamePasswordInterface::class)) {
             throw new \InvalidArgumentException(
                 sprintf("The instance must implement the interface %s", UsernamePasswordInterface::class)
             );
