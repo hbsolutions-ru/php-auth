@@ -6,6 +6,7 @@ use Firebase\JWT\{ExpiredException, JWT, Key};
 use HBS\Helpers\ObjectHelper;
 use HBS\Auth\{
     Exception\AuthenticationException,
+    Immutable\JwtSettings,
     Mapper\ArrayToIdentityInterface,
     Model\Credentials\CredentialsInterface,
     Model\Credentials\TokenInterface,
@@ -22,28 +23,21 @@ class JwtAuthenticator implements AuthenticatorInterface
     /**
      * @var string
      */
-    protected $algorithm;
-
-    /**
-     * @var string
-     */
     protected $identityDomain;
 
     /**
-     * @var string
+     * @var JwtSettings
      */
-    protected $secret;
+    protected $settings;
 
     public function __construct(
         ArrayToIdentityInterface $payloadMapper,
-        string $algorithm,
         string $identityDomain,
-        string $secret
+        JwtSettings $settings
     ) {
         $this->payloadMapper = $payloadMapper;
-        $this->algorithm = $algorithm;
         $this->identityDomain = $identityDomain;
-        $this->secret = $secret;
+        $this->settings = $settings;
     }
 
     public function authenticate(CredentialsInterface $credentials): IdentityInterface
@@ -59,7 +53,7 @@ class JwtAuthenticator implements AuthenticatorInterface
         }
 
         try {
-            $key = new Key($this->secret, $this->algorithm);
+            $key = new Key($this->settings->secret, $this->settings->algorithm);
             $payload = ObjectHelper::toArray(
                 JWT::decode($credentials->getToken(), $key)
             );

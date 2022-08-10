@@ -4,7 +4,7 @@ namespace HBS\Auth\Model\Identity;
 
 use HBS\Auth\Exception\MisconfigurationException;
 
-class AbstractIdentity implements IdentityInterface
+abstract class AbstractIdentity implements IdentityInterface
 {
     /**
      * @var string

@@ -10,4 +10,6 @@ interface IdentityInterface
      * @return string
      */
     public function getDomain(): string;
+
+    public function toArray(): array;
 }
