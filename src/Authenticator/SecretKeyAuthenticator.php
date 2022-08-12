@@ -2,18 +2,16 @@
 
 namespace HBS\Auth\Authenticator;
 
-use Firebase\JWT\{ExpiredException, JWT, Key};
 use HBS\Helpers\ObjectHelper;
 use HBS\Auth\{
     Exception\AuthenticationException,
-    Immutable\JwtSettings,
     Mapper\ArrayToIdentityInterface,
     Model\Credentials\CredentialsInterface,
     Model\Credentials\TokenInterface,
     Model\Identity\IdentityInterface,
 };
 
-class JwtAuthenticator implements AuthenticatorInterface
+class SecretKeyAuthenticator implements AuthenticatorInterface
 {
     /**
      * @var ArrayToIdentityInterface
@@ -26,18 +24,18 @@ class JwtAuthenticator implements AuthenticatorInterface
     protected $identityDomain;
 
     /**
-     * @var JwtSettings
+     * @var string
      */
-    protected $settings;
+    protected $secretKey;
 
     public function __construct(
         ArrayToIdentityInterface $payloadMapper,
         string $identityDomain,
-        JwtSettings $settings
+        string $secretKey
     ) {
         $this->payloadMapper = $payloadMapper;
         $this->identityDomain = $identityDomain;
-        $this->settings = $settings;
+        $this->secretKey = $secretKey;
     }
 
     public function authenticate(CredentialsInterface $credentials): IdentityInterface
@@ -52,19 +50,10 @@ class JwtAuthenticator implements AuthenticatorInterface
             );
         }
 
-        try {
-            $key = new Key($this->settings->secret, $this->settings->algorithm);
-            $payload = ObjectHelper::toArray(
-                JWT::decode($credentials->getToken(), $key)
-            );
-        } catch (ExpiredException $e) {
-            throw new AuthenticationException("Data processing error", $e->getCode(), $e);
-        } catch (\LogicException $e) {
-            throw new AuthenticationException("Invalid token");
-        } catch (\RuntimeException $e) {
-            throw new AuthenticationException("Invalid token");
+        if ($credentials->getToken() !== $this->secretKey) {
+            throw new AuthenticationException("Wrong credentials");
         }
 
-        return $this->payloadMapper->transform($payload, $this->identityDomain);
+        return $this->payloadMapper->transform($credentials->getPayload(), $this->identityDomain);
     }
 }
