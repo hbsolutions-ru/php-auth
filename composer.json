@@ -18,7 +18,8 @@
     "require": {
         "php": "^7.4",
         "firebase/php-jwt": "dev-main",
-        "hbsolutions/php-helpers": "dev-main"
+        "hbsolutions/php-helpers": "dev-main",
+        "hbsolutions/php-immutable": "dev-main"
     },
     "require-dev": {
         "psr/http-factory": "1.0.x-dev",

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "85206bf8fe60ce457363bcbf05ed7c5b",
+    "content-hash": "4641c85efeab657f75736c977c8953fd",
     "packages": [
         {
             "name": "firebase/php-jwt",
@@ -113,6 +113,47 @@
                 "source": "https://github.com/hbsolutions-ru/php-helpers/tree/main"
             },
             "time": "2022-08-08T08:19:11+00:00"
+        },
+        {
+            "name": "hbsolutions/php-immutable",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hbsolutions-ru/php-immutable.git",
+                "reference": "67b814f071354906c1078b9508c7a15d20f1fae2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hbsolutions-ru/php-immutable/zipball/67b814f071354906c1078b9508c7a15d20f1fae2",
+                "reference": "67b814f071354906c1078b9508c7a15d20f1fae2",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.4"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "HBS\\Immutable\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "HBS Development Team",
+                    "email": "dev.hbsolutions@gmail.com"
+                }
+            ],
+            "description": "Yet another implementation of Immutable Objects in PHP",
+            "support": {
+                "issues": "https://github.com/hbsolutions-ru/php-immutable/issues",
+                "source": "https://github.com/hbsolutions-ru/php-immutable/tree/main"
+            },
+            "time": "2022-08-15T14:54:37+00:00"
         }
     ],
     "packages-dev": [
@@ -282,6 +323,7 @@
     "stability-flags": {
         "firebase/php-jwt": 20,
         "hbsolutions/php-helpers": 20,
+        "hbsolutions/php-immutable": 20,
         "psr/http-factory": 20,
         "psr/http-message": 20
     },
@@ -291,5 +333,5 @@
         "php": "^7.4"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.2.0"
 }
