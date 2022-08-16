@@ -2,9 +2,11 @@
 
 namespace HBS\Auth\Authenticator;
 
+use Psr\Log\{LoggerInterface, NullLogger};
 use HBS\Helpers\ObjectHelper;
 use HBS\Auth\{
     Exception\AuthenticationException,
+    Immutable\HmacSettings,
     Mapper\AccountEntityToIdentityInterface,
     Model\Credentials\CredentialsInterface,
     Model\Credentials\UsernamePasswordInterface,
@@ -27,30 +29,30 @@ class UsernamePasswordAuthenticator implements AuthenticatorInterface
     /**
      * @var string
      */
-    protected $algorithm;
-
-    /**
-     * @var string
-     */
     protected $identityDomain;
 
     /**
-     * @var string
+     * @var LoggerInterface
      */
-    protected $pepper;
+    protected $logger;
+
+    /**
+     * @var HmacSettings
+     */
+    protected $settings;
 
     public function __construct(
         AccountEntityToIdentityInterface $accountMapper,
         AccountRepositoryInterface $accountRepository,
-        string $algorithm,
         string $identityDomain,
-        string $pepper
+        HmacSettings $settings,
+        ?LoggerInterface $logger = null
     ) {
         $this->accountMapper = $accountMapper;
         $this->accountRepository = $accountRepository;
-        $this->algorithm = $algorithm;
         $this->identityDomain = $identityDomain;
-        $this->pepper = $pepper;
+        $this->settings = $settings;
+        $this->logger = $logger ?? new NullLogger();
     }
 
     public function authenticate(CredentialsInterface $credentials): IdentityInterface
@@ -65,9 +67,19 @@ class UsernamePasswordAuthenticator implements AuthenticatorInterface
             );
         }
 
-        $account = $this->accountRepository->getByUsername($credentials->getUsername());
+        try {
+            $account = $this->accountRepository->getByUsername($credentials->getUsername());
+        } catch (\RuntimeException $e) {
+            // User not found by name or something went wrong
+            $this->logger->debug(sprintf(
+                "[UsernamePasswordAuthenticator] Failed to retrieve user: %s",
+                $e->getMessage()
+            ));
 
-        $peppered = hash_hmac($this->algorithm, $credentials->getPassword(), $this->pepper);
+            throw new AuthenticationException("Wrong credentials");
+        }
+
+        $peppered = hash_hmac($this->settings->algorithm, $credentials->getPassword(), $this->settings->secret);
 
         $success = password_verify($peppered, $account->getPasswordHash());
 
