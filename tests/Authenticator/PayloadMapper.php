@@ -9,6 +9,8 @@ final class PayloadMapper implements ArrayToIdentityInterface
 {
     public function transform(array $payload, string $identityDomain): IdentityInterface
     {
-        return new Identity();
+        return new Identity(
+            intval($payload['userId'] ?? 0)
+        );
     }
 }
