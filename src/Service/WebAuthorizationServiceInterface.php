@@ -6,7 +6,10 @@ use Psr\Http\Message\{
     ResponseInterface as Response,
     ServerRequestInterface as Request,
 };
-use HBS\Auth\Exception\AuthenticationException;
+use HBS\Auth\{
+    Exception\AuthenticationException,
+    Model\Credentials\CredentialsInterface,
+};
 
 interface WebAuthorizationServiceInterface
 {
@@ -14,9 +17,10 @@ interface WebAuthorizationServiceInterface
      * Authenticate (by the HTTP Authorization header or query param) and authorize user
      *
      * @param Request $request
+     * @return CredentialsInterface|null
      * @throws AuthenticationException
      */
-    public function authorize(Request $request): void;
+    public function authorize(Request $request): ?CredentialsInterface;
 
     /**
      * Response for unauthorized user

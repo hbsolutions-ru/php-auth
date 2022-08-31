@@ -15,6 +15,7 @@ use HBS\Auth\{
     Authenticator\AuthenticatorInterface,
     Authorizer\AuthorizerInterface,
     Exception\AuthenticationException,
+    Model\Credentials\CredentialsInterface,
     Model\Credentials\Token,
 };
 
@@ -56,9 +57,10 @@ class BearerAuthorizationService implements WebAuthorizationServiceInterface
      * Authenticate (by the HTTP Authorization header or query param) and authorize user
      *
      * @param Request $request
+     * @return CredentialsInterface|null
      * @throws AuthenticationException
      */
-    public function authorize(Request $request): void
+    public function authorize(Request $request): ?CredentialsInterface
     {
         $bearer = $this->getBearer($request);
 
@@ -69,6 +71,8 @@ class BearerAuthorizationService implements WebAuthorizationServiceInterface
         }
 
         $this->authorizer->authorize($identity);
+
+        return null;
     }
 
     protected function getBearer(Request $request): Token

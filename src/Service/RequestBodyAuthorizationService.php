@@ -15,6 +15,7 @@ use HBS\Auth\{
     Authenticator\AuthenticatorInterface,
     Authorizer\AuthorizerInterface,
     Exception\AuthenticationException,
+    Model\Credentials\CredentialsInterface,
     Model\Credentials\UsernamePassword,
 };
 
@@ -70,9 +71,10 @@ class RequestBodyAuthorizationService implements WebAuthorizationServiceInterfac
      * Authenticate (by the HTTP Authorization header or query param) and authorize user
      *
      * @param Request $request
+     * @return CredentialsInterface|null
      * @throws AuthenticationException
      */
-    public function authorize(Request $request): void
+    public function authorize(Request $request): ?CredentialsInterface
     {
         $credentials = $this->getCredentials($request);
 
@@ -83,6 +85,8 @@ class RequestBodyAuthorizationService implements WebAuthorizationServiceInterfac
         }
 
         $this->authorizer->authorize($identity);
+
+        return null;
     }
 
     protected function getCredentials(Request $request): UsernamePassword
