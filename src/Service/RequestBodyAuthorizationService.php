@@ -15,6 +15,7 @@ use HBS\Auth\{
     Authenticator\AuthenticatorInterface,
     Authorizer\AuthorizerInterface,
     Exception\AuthenticationException,
+    Mapper\IdentityToCredentialsInterface,
     Model\Credentials\CredentialsInterface,
     Model\Credentials\UsernamePassword,
 };
@@ -37,11 +38,6 @@ class RequestBodyAuthorizationService implements WebAuthorizationServiceInterfac
     protected $factory;
 
     /**
-     * @var LoggerInterface
-     */
-    protected $logger;
-
-    /**
      * @var string
      */
     protected $usernameParamName;
@@ -51,12 +47,23 @@ class RequestBodyAuthorizationService implements WebAuthorizationServiceInterfac
      */
     protected $passwordParamName;
 
+    /**
+     * @var IdentityToCredentialsInterface|null
+     */
+    protected $passThroughAuthMapper;
+
+    /**
+     * @var LoggerInterface
+     */
+    protected $logger;
+
     public function __construct(
         AuthenticatorInterface $authenticator,
         AuthorizerInterface $authorizer,
         ResponseFactoryInterface $factory,
         string $usernameParamName = 'username',
         string $passwordParamName = 'password',
+        IdentityToCredentialsInterface $passThroughAuthMapper = null,
         LoggerInterface $logger = null
     ) {
         $this->authenticator = $authenticator;
@@ -64,6 +71,7 @@ class RequestBodyAuthorizationService implements WebAuthorizationServiceInterfac
         $this->factory = $factory;
         $this->usernameParamName = $usernameParamName;
         $this->passwordParamName = $passwordParamName;
+        $this->passThroughAuthMapper = $passThroughAuthMapper;
         $this->logger = $logger ?: new NullLogger();
     }
 
@@ -86,7 +94,11 @@ class RequestBodyAuthorizationService implements WebAuthorizationServiceInterfac
 
         $this->authorizer->authorize($identity);
 
-        return null;
+        if ($this->passThroughAuthMapper === null) {
+            return null;
+        }
+
+        return $this->passThroughAuthMapper->transform($identity);
     }
 
     protected function getCredentials(Request $request): UsernamePassword
