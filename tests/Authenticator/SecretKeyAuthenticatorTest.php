@@ -28,9 +28,9 @@ final class SecretKeyAuthenticatorTest extends TestCase
             $this->fail("Failed to check correct secret key");
         }
 
-        $userData = $identity->toArray();
+        $identityData = $identity->toArray();
 
-        $this->assertArrayHasKey('id', $userData);
-        $this->assertEquals($userId, $userData['id']);
+        $this->assertArrayHasKey('id', $identityData);
+        $this->assertEquals($userId, $identityData['id']);
     }
 }
