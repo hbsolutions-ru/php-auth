@@ -9,7 +9,7 @@ use HBS\Auth\Model\Credentials\Token;
 
 final class SecretKeyAuthenticatorTest extends TestCase
 {
-    public function testAuthenticate(): void
+    public function testAuthenticateSuccessful(): void
     {
         $secretKey = "\$eCrEt-KeY";
         $userId = 42;
@@ -32,5 +32,27 @@ final class SecretKeyAuthenticatorTest extends TestCase
 
         $this->assertArrayHasKey('id', $identityData);
         $this->assertEquals($userId, $identityData['id']);
+    }
+
+    public function testAuthenticateWrongCredentials(): void
+    {
+        $secretKey = "\$eCrEt-KeY";
+        $wrongSecretKey = "wrong-secret";
+        $userId = 42;
+
+        $authenticator = new SecretKeyAuthenticator(
+            new PayloadMapper(),
+            "TEST",
+            $secretKey
+        );
+
+        $credentials = new Token($wrongSecretKey, ['userId' => $userId]);
+
+        try {
+            $authenticator->authenticate($credentials);
+            $this->fail("Exception not thrown but expected");
+        } catch (AuthenticationException $e) {
+            $this->assertStringContainsString("Wrong credentials", $e->getMessage());
+        }
     }
 }

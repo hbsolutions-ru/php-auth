@@ -39,19 +39,19 @@ class UsernamePasswordAuthenticator implements AuthenticatorInterface
     /**
      * @var HmacSettings
      */
-    protected $settings;
+    protected $hmacSettings;
 
     public function __construct(
         AccountEntityToIdentityInterface $accountMapper,
         AccountRepositoryInterface $accountRepository,
         string $identityDomain,
-        HmacSettings $settings,
+        HmacSettings $hmacSettings,
         ?LoggerInterface $logger = null
     ) {
         $this->accountMapper = $accountMapper;
         $this->accountRepository = $accountRepository;
         $this->identityDomain = $identityDomain;
-        $this->settings = $settings;
+        $this->hmacSettings = $hmacSettings;
         $this->logger = $logger ?? new NullLogger();
     }
 
@@ -79,7 +79,7 @@ class UsernamePasswordAuthenticator implements AuthenticatorInterface
             throw new AuthenticationException("Wrong credentials");
         }
 
-        $peppered = hash_hmac($this->settings->algorithm, $credentials->getPassword(), $this->settings->secret);
+        $peppered = hash_hmac($this->hmacSettings->algorithm, $credentials->getPassword(), $this->hmacSettings->secret);
 
         $success = password_verify($peppered, $account->getPasswordHash());
 
