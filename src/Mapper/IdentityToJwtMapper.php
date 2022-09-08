@@ -47,11 +47,24 @@ class IdentityToJwtMapper implements IdentityToCredentialsInterface
             'jti' => $jti,
             'iat' => $iat,
             'exp' => $exp,
-            'data' => $identity->toArray(),
+            'data' => $this->getUserData($identity),
         ];
 
         return new Token(
-            JWT::encode($payload, $this->settings->secret, $this->settings->algorithm)
+            JWT::encode($payload, $this->settings->secret, $this->settings->algorithm),
+            $payload
         );
+    }
+
+    /**
+     * Transforms Identity to array with User Data.
+     * The method could be overridden in child class implementing some custom logic.
+     *
+     * @param IdentityInterface $identity
+     * @return array
+     */
+    protected function getUserData(IdentityInterface $identity): array
+    {
+        return $identity->toArray();
     }
 }
