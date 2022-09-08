@@ -59,16 +59,35 @@ final class UsernamePasswordAuthenticatorTest extends TestCase
         $userData = $this->getTestData();
 
         $openPassword = "wrong-password";
-        $userId = $userData[0]['id'];
         $username = $userData[0]['username'];
 
-        $userData = [
-            [
-                'id' => $userId,
-                'username' => $username,
-                'passwordHash' => "\$argon2id\$v=19\$m=65536,t=4,p=1\$cXIvcGpTVkVaWUppRjFQbQ\$EbIogIov2OMe8QC7Z3IEOGurV08dGwkcHOmwf17uCnc",
-            ],
-        ];
+        $mapper = new AccountEntityMapper();
+        $repository = new AccountRepository($userData);
+        $settings = new HmacSettings("sha3-512", "\$eCrEt-KeY");
+
+        $authenticator = new UsernamePasswordAuthenticator(
+            $mapper,
+            $repository,
+            "TEST",
+            $settings
+        );
+
+        $credentials = new UsernamePassword($username, $openPassword);
+
+        try {
+            $authenticator->authenticate($credentials);
+            $this->fail("Exception not thrown but expected");
+        } catch (AuthenticationException $e) {
+            $this->assertStringContainsString("Wrong credentials", $e->getMessage());
+        }
+    }
+
+    public function testAuthenticateUserNotFound()
+    {
+        $userData = $this->getTestData();
+
+        $openPassword = "mYp@s\$w0rD";
+        $username = "robert-roe";
 
         $mapper = new AccountEntityMapper();
         $repository = new AccountRepository($userData);
