@@ -61,7 +61,7 @@ class QueryParamAuthorizationService implements WebAuthorizationServiceInterface
     }
 
     /**
-     * Authenticate (by the HTTP Authorization header or query param) and authorize user
+     * Authenticate by the HTTP Authorization header, form (POST) or query (GET) params; and authorize user
      *
      * @param Request $request
      * @return CredentialsInterface|null

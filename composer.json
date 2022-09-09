@@ -19,7 +19,7 @@
         "psr-4": { "Tests\\": "tests/" }
     },
     "require": {
-        "php": "^7.4|^8",
+        "php": "^7.4||^8",
         "psr/log": "^1.1",
         "psr/http-factory": "1.0.x-dev",
         "psr/http-message": "1.0.x-dev",

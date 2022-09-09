@@ -17,10 +17,10 @@ use HBS\Auth\{
     Exception\AuthenticationException,
     Mapper\IdentityToCredentialsInterface,
     Model\Credentials\CredentialsInterface,
-    Model\Credentials\UsernamePassword,
+    Model\Credentials\Token,
 };
 
-class RequestBodyAuthorizationService implements WebAuthorizationServiceInterface
+class SecretKeyAuthorizationService implements WebAuthorizationServiceInterface
 {
     /**
      * @var AuthenticatorInterface
@@ -40,12 +40,7 @@ class RequestBodyAuthorizationService implements WebAuthorizationServiceInterfac
     /**
      * @var string
      */
-    protected $usernameParamName;
-
-    /**
-     * @var string
-     */
-    protected $passwordParamName;
+    protected $paramName;
 
     /**
      * @var IdentityToCredentialsInterface|null
@@ -61,16 +56,14 @@ class RequestBodyAuthorizationService implements WebAuthorizationServiceInterfac
         AuthenticatorInterface $authenticator,
         AuthorizerInterface $authorizer,
         ResponseFactoryInterface $factory,
-        string $usernameParamName = 'username',
-        string $passwordParamName = 'password',
+        string $paramName = 'token',
         IdentityToCredentialsInterface $passThroughAuthMapper = null,
         LoggerInterface $logger = null
     ) {
         $this->authenticator = $authenticator;
         $this->authorizer = $authorizer;
         $this->factory = $factory;
-        $this->usernameParamName = $usernameParamName;
-        $this->passwordParamName = $passwordParamName;
+        $this->paramName = $paramName;
         $this->passThroughAuthMapper = $passThroughAuthMapper;
         $this->logger = $logger ?: new NullLogger();
     }
@@ -101,18 +94,17 @@ class RequestBodyAuthorizationService implements WebAuthorizationServiceInterfac
         return $this->passThroughAuthMapper->transform($identity);
     }
 
-    protected function getCredentials(Request $request): UsernamePassword
+    protected function getCredentials(Request $request): Token
     {
         $bodyParams = (array)$request->getParsedBody();
 
-        $username = $bodyParams[$this->usernameParamName] ?? '';
-        $password = $bodyParams[$this->passwordParamName] ?? '';
+        $token = $bodyParams[$this->paramName] ?? '';
 
-        if (empty($username) || empty($password)) {
+        if (empty($token)) {
             throw new AuthenticationException('Authentication data not found or is not in the correct format');
         }
 
-        return new UsernamePassword($username, $password);
+        return new Token($token);
     }
 
     /**
