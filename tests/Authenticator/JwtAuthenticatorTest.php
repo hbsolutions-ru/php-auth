@@ -7,6 +7,7 @@ use HBS\Auth\Authenticator\JwtAuthenticator;
 use HBS\Auth\Exception\AuthenticationException;
 use HBS\Auth\Immutable\JwtSettings;
 use HBS\Auth\Mapper\IdentityToJwtMapper;
+use Tests\AuxiliaryClasses\Identity;
 
 final class JwtAuthenticatorTest extends TestCase
 {

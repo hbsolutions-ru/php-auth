@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Tests\Authenticator;
+namespace Tests\AuxiliaryClasses;
 
 use HBS\Auth\Model\Identity\AbstractIdentity;
 

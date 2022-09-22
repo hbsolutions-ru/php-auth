@@ -3,6 +3,7 @@
 namespace HBS\Auth\Mapper;
 
 use DateTime;
+use Exception;
 use Firebase\JWT\JWT;
 use HBS\Helpers\{
     DateTimeHelper,
@@ -30,7 +31,7 @@ class IdentityToJwtMapper implements IdentityToCredentialsInterface
     /**
      * @param IdentityInterface $identity
      * @return CredentialsInterface
-     * @throws \Exception
+     * @throws Exception
      */
     public function transform(IdentityInterface $identity): CredentialsInterface
     {

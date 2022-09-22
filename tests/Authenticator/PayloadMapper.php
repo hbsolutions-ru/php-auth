@@ -4,6 +4,7 @@ namespace Tests\Authenticator;
 
 use HBS\Auth\Mapper\ArrayToIdentityInterface;
 use HBS\Auth\Model\Identity\IdentityInterface;
+use Tests\AuxiliaryClasses\Identity;
 
 final class PayloadMapper implements ArrayToIdentityInterface
 {
