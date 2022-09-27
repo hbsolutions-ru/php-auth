@@ -104,7 +104,9 @@ class SecretKeyAuthorizationService implements WebAuthorizationServiceInterface
             throw new AuthenticationException('Authentication data not found or is not in the correct format');
         }
 
-        return new Token($token);
+        unset($bodyParams[$this->paramName]);
+
+        return new Token($token, $bodyParams);
     }
 
     /**

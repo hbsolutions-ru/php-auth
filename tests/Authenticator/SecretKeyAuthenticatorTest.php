@@ -6,6 +6,7 @@ use PHPUnit\Framework\TestCase;
 use HBS\Auth\Authenticator\SecretKeyAuthenticator;
 use HBS\Auth\Exception\AuthenticationException;
 use HBS\Auth\Model\Credentials\Token;
+use Tests\AuxiliaryClasses\PayloadMapper;
 
 final class SecretKeyAuthenticatorTest extends TestCase
 {
