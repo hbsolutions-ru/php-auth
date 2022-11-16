@@ -6,20 +6,11 @@ use HBS\Auth\Model\Account\AccountEntityInterface;
 
 final class AccountEntity implements AccountEntityInterface
 {
-    /**
-     * @var int
-     */
-    private $id;
+    private int $id;
 
-    /**
-     * @var string
-     */
-    private $username;
+    private string $username;
 
-    /**
-     * @var string
-     */
-    private $passwordHash;
+    private string $passwordHash;
 
     public function __construct(int $id, string $username, string $passwordHash)
     {

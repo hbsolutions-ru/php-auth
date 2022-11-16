@@ -13,20 +13,11 @@ use HBS\Auth\{
 
 class SecretKeyAuthenticator implements AuthenticatorInterface
 {
-    /**
-     * @var ArrayToIdentityInterface
-     */
-    protected $payloadMapper;
+    protected ArrayToIdentityInterface $payloadMapper;
 
-    /**
-     * @var string
-     */
-    protected $identityDomain;
+    protected string $identityDomain;
 
-    /**
-     * @var string
-     */
-    protected $secretKey;
+    protected string $secretKey;
 
     public function __construct(
         ArrayToIdentityInterface $payloadMapper,

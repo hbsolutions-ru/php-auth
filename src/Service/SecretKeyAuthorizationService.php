@@ -22,35 +22,17 @@ use HBS\Auth\{
 
 class SecretKeyAuthorizationService implements WebAuthorizationServiceInterface
 {
-    /**
-     * @var AuthenticatorInterface
-     */
-    protected $authenticator;
+    protected AuthenticatorInterface $authenticator;
 
-    /**
-     * @var AuthorizerInterface
-     */
-    protected $authorizer;
+    protected AuthorizerInterface $authorizer;
 
-    /**
-     * @var ResponseFactoryInterface
-     */
-    protected $factory;
+    protected ResponseFactoryInterface $factory;
 
-    /**
-     * @var string
-     */
-    protected $paramName;
+    protected string $paramName;
 
-    /**
-     * @var IdentityToCredentialsInterface|null
-     */
-    protected $passThroughAuthMapper;
+    protected ?IdentityToCredentialsInterface $passThroughAuthMapper;
 
-    /**
-     * @var LoggerInterface
-     */
-    protected $logger;
+    protected LoggerInterface $logger;
 
     public function __construct(
         AuthenticatorInterface $authenticator,

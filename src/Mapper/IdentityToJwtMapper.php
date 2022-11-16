@@ -18,10 +18,7 @@ use HBS\Auth\{
 
 class IdentityToJwtMapper implements IdentityToCredentialsInterface
 {
-    /**
-     * @var JwtSettings
-     */
-    protected $settings;
+    protected JwtSettings $settings;
 
     public function __construct(JwtSettings $settings)
     {

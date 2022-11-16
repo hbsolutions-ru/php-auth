@@ -15,20 +15,11 @@ use HBS\Auth\{
 
 class JwtAuthenticator implements AuthenticatorInterface
 {
-    /**
-     * @var ArrayToIdentityInterface
-     */
-    protected $payloadMapper;
+    protected ArrayToIdentityInterface $payloadMapper;
 
-    /**
-     * @var string
-     */
-    protected $identityDomain;
+    protected string $identityDomain;
 
-    /**
-     * @var JwtSettings
-     */
-    protected $settings;
+    protected JwtSettings $settings;
 
     public function __construct(
         ArrayToIdentityInterface $payloadMapper,
@@ -59,9 +50,7 @@ class JwtAuthenticator implements AuthenticatorInterface
             );
         } catch (ExpiredException $e) {
             throw new AuthenticationException("Data processing error", $e->getCode(), $e);
-        } catch (\LogicException $e) {
-            throw new AuthenticationException("Invalid token");
-        } catch (\RuntimeException $e) {
+        } catch (\LogicException|\RuntimeException $e) {
             throw new AuthenticationException("Invalid token");
         }
 

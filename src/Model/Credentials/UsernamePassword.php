@@ -4,15 +4,9 @@ namespace HBS\Auth\Model\Credentials;
 
 class UsernamePassword implements UsernamePasswordInterface
 {
-    /**
-     * @var string
-     */
-    protected $username;
+    protected string $username;
 
-    /**
-     * @var string
-     */
-    protected $password;
+    protected string $password;
 
     public function __construct(string $username, string $password)
     {

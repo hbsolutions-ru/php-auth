@@ -4,15 +4,9 @@ namespace HBS\Auth\Model\Credentials;
 
 class Token implements TokenInterface
 {
-    /**
-     * @var string
-     */
-    protected $token;
+    protected string $token;
 
-    /**
-     * @var array
-     */
-    protected $payload;
+    protected array $payload;
 
     public function __construct(string $token, array $payload = [])
     {

@@ -22,40 +22,19 @@ use HBS\Auth\{
 
 class RequestBodyAuthorizationService implements WebAuthorizationServiceInterface
 {
-    /**
-     * @var AuthenticatorInterface
-     */
-    protected $authenticator;
+    protected AuthenticatorInterface $authenticator;
 
-    /**
-     * @var AuthorizerInterface
-     */
-    protected $authorizer;
+    protected AuthorizerInterface $authorizer;
 
-    /**
-     * @var ResponseFactoryInterface
-     */
-    protected $factory;
+    protected ResponseFactoryInterface $factory;
 
-    /**
-     * @var string
-     */
-    protected $usernameParamName;
+    protected string $usernameParamName;
 
-    /**
-     * @var string
-     */
-    protected $passwordParamName;
+    protected string $passwordParamName;
 
-    /**
-     * @var IdentityToCredentialsInterface|null
-     */
-    protected $passThroughAuthMapper;
+    protected ?IdentityToCredentialsInterface $passThroughAuthMapper;
 
-    /**
-     * @var LoggerInterface
-     */
-    protected $logger;
+    protected LoggerInterface $logger;
 
     public function __construct(
         AuthenticatorInterface $authenticator,

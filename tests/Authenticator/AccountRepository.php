@@ -8,10 +8,7 @@ use HBS\Auth\Repository\AccountRepositoryInterface;
 
 final class AccountRepository implements AccountRepositoryInterface
 {
-    /**
-     * @var array
-     */
-    private $data;
+    private array $data;
 
     public function __construct(array $data)
     {

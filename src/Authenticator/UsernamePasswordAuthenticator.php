@@ -16,30 +16,15 @@ use HBS\Auth\{
 
 class UsernamePasswordAuthenticator implements AuthenticatorInterface
 {
-    /**
-     * @var AccountEntityToIdentityInterface
-     */
-    protected $accountMapper;
+    protected AccountEntityToIdentityInterface $accountMapper;
 
-    /**
-     * @var AccountRepositoryInterface
-     */
-    protected $accountRepository;
+    protected AccountRepositoryInterface $accountRepository;
 
-    /**
-     * @var string
-     */
-    protected $identityDomain;
+    protected string $identityDomain;
 
-    /**
-     * @var LoggerInterface
-     */
-    protected $logger;
+    protected LoggerInterface $logger;
 
-    /**
-     * @var HmacSettings
-     */
-    protected $hmacSettings;
+    protected HmacSettings $hmacSettings;
 
     public function __construct(
         AccountEntityToIdentityInterface $accountMapper,

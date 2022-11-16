@@ -21,25 +21,13 @@ use HBS\Auth\{
 
 class BasicAuthorizationService implements WebAuthorizationServiceInterface
 {
-    /**
-     * @var AuthenticatorInterface
-     */
-    protected $authenticator;
+    protected AuthenticatorInterface $authenticator;
 
-    /**
-     * @var AuthorizerInterface
-     */
-    protected $authorizer;
+    protected AuthorizerInterface $authorizer;
 
-    /**
-     * @var ResponseFactoryInterface
-     */
-    protected $factory;
+    protected ResponseFactoryInterface $factory;
 
-    /**
-     * @var LoggerInterface
-     */
-    protected $logger;
+    protected LoggerInterface $logger;
 
     public function __construct(
         AuthenticatorInterface $authenticator,

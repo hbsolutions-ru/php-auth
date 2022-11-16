@@ -21,30 +21,15 @@ use HBS\Auth\{
 
 class QueryParamAuthorizationService implements WebAuthorizationServiceInterface
 {
-    /**
-     * @var AuthenticatorInterface
-     */
-    protected $authenticator;
+    protected AuthenticatorInterface $authenticator;
 
-    /**
-     * @var AuthorizerInterface
-     */
-    protected $authorizer;
+    protected AuthorizerInterface $authorizer;
 
-    /**
-     * @var ResponseFactoryInterface
-     */
-    protected $factory;
+    protected ResponseFactoryInterface $factory;
 
-    /**
-     * @var LoggerInterface
-     */
-    protected $logger;
+    protected LoggerInterface $logger;
 
-    /**
-     * @var string
-     */
-    protected $queryParamName;
+    protected string $queryParamName;
 
     public function __construct(
         AuthenticatorInterface $authenticator,
