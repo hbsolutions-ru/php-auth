@@ -21,9 +21,11 @@
     "require": {
         "php": "^7.4||^8",
         "ext-json": "*",
-        "psr/log": "^1.1",
         "psr/http-factory": "1.0.x-dev",
         "psr/http-message": "1.0.x-dev",
+        "psr/http-server-handler": "1.0.x-dev",
+        "psr/http-server-middleware": "1.0.x-dev",
+        "psr/log": "^1.1",
         "firebase/php-jwt": "dev-main",
         "hbsolutions/php-helpers": "dev-main",
         "hbsolutions/php-immutable": "dev-main"
