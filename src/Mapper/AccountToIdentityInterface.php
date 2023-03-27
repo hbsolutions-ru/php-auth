@@ -10,9 +10,9 @@ use HBS\Auth\{
 interface AccountToIdentityInterface
 {
     /**
-     * @param AccountInterface $accountEntity
+     * @param AccountInterface $account
      * @param string $identityDomain
      * @return IdentityInterface
      */
-    public function transform(AccountInterface $accountEntity, string $identityDomain): IdentityInterface;
+    public function transform(AccountInterface $account, string $identityDomain): IdentityInterface;
 }

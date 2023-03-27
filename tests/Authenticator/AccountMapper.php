@@ -12,10 +12,10 @@ final class AccountMapper implements AccountToIdentityInterface
     /**
      * @inheritDoc
      */
-    public function transform(AccountInterface $accountEntity, string $identityDomain): IdentityInterface
+    public function transform(AccountInterface $account, string $identityDomain): IdentityInterface
     {
         return new Identity(
-            $accountEntity->getId()
+            $account->getId()
         );
     }
 }
