@@ -7,7 +7,7 @@ use HBS\Helpers\ObjectHelper;
 use HBS\Auth\{
     Exception\AuthenticationException,
     Immutable\HmacSettings,
-    Mapper\AccountEntityToIdentityInterface,
+    Mapper\AccountToIdentityInterface,
     Model\Credentials\CredentialsInterface,
     Model\Credentials\UsernamePasswordInterface,
     Model\Identity\IdentityInterface,
@@ -16,7 +16,7 @@ use HBS\Auth\{
 
 class UsernamePasswordAuthenticator implements AuthenticatorInterface
 {
-    protected AccountEntityToIdentityInterface $accountMapper;
+    protected AccountToIdentityInterface $accountMapper;
 
     protected AccountRepositoryInterface $accountRepository;
 
@@ -27,11 +27,11 @@ class UsernamePasswordAuthenticator implements AuthenticatorInterface
     protected HmacSettings $hmacSettings;
 
     public function __construct(
-        AccountEntityToIdentityInterface $accountMapper,
+        AccountToIdentityInterface $accountMapper,
         AccountRepositoryInterface $accountRepository,
-        string $identityDomain,
-        HmacSettings $hmacSettings,
-        ?LoggerInterface $logger = null
+        string                     $identityDomain,
+        HmacSettings               $hmacSettings,
+        ?LoggerInterface           $logger = null
     ) {
         $this->accountMapper = $accountMapper;
         $this->accountRepository = $accountRepository;

@@ -2,9 +2,9 @@
 
 namespace Tests\Authenticator;
 
-use HBS\Auth\Model\Account\AccountEntityInterface;
+use HBS\Auth\Model\Account\AccountInterface;
 
-final class AccountEntity implements AccountEntityInterface
+final class Account implements AccountInterface
 {
     private int $id;
 

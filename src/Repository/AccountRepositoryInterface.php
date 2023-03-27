@@ -2,9 +2,9 @@
 
 namespace HBS\Auth\Repository;
 
-use HBS\Auth\Model\Account\AccountEntityInterface;
+use HBS\Auth\Model\Account\AccountInterface;
 
 interface AccountRepositoryInterface
 {
-    public function getByUsername(string $username): AccountEntityInterface;
+    public function getByUsername(string $username): AccountInterface;
 }

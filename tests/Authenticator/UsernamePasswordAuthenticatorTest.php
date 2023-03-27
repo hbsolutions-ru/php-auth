@@ -29,7 +29,7 @@ final class UsernamePasswordAuthenticatorTest extends TestCase
         $userId = $userData[0]['id'];
         $username = $userData[0]['username'];
 
-        $mapper = new AccountEntityMapper();
+        $mapper = new AccountMapper();
         $repository = new AccountRepository($userData);
         $settings = new HmacSettings("sha3-512", "\$eCrEt-KeY");
 
@@ -61,7 +61,7 @@ final class UsernamePasswordAuthenticatorTest extends TestCase
         $openPassword = "wrong-password";
         $username = $userData[0]['username'];
 
-        $mapper = new AccountEntityMapper();
+        $mapper = new AccountMapper();
         $repository = new AccountRepository($userData);
         $settings = new HmacSettings("sha3-512", "\$eCrEt-KeY");
 
@@ -89,7 +89,7 @@ final class UsernamePasswordAuthenticatorTest extends TestCase
         $openPassword = "mYp@s\$w0rD";
         $username = "robert-roe";
 
-        $mapper = new AccountEntityMapper();
+        $mapper = new AccountMapper();
         $repository = new AccountRepository($userData);
         $settings = new HmacSettings("sha3-512", "\$eCrEt-KeY");
 

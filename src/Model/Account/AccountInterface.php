@@ -2,7 +2,7 @@
 
 namespace HBS\Auth\Model\Account;
 
-interface AccountEntityInterface
+interface AccountInterface
 {
     public function getId(): int;
 
