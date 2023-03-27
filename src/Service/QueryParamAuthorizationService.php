@@ -86,7 +86,7 @@ class QueryParamAuthorizationService implements WebAuthorizationServiceInterface
      */
     public function unauthorized(?AuthenticationException $exception = null): Response
     {
-        $this->logger->notice(sprintf(
+        $this->logger->notice(\sprintf(
             "[%s] Authentication failed: %s",
             __CLASS__,
             $exception ? $exception->getMessage() : "Unknown error"

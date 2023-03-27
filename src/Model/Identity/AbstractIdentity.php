@@ -15,7 +15,7 @@ abstract class AbstractIdentity implements IdentityInterface
     {
         $domain = static::DOMAIN;
 
-        if (empty($domain) || !is_string($domain)) {
+        if (empty($domain) || !\is_string($domain)) {
             throw new MisconfigurationException("Identity Domain not defined");
         }
 

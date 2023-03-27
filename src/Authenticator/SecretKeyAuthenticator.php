@@ -37,7 +37,7 @@ class SecretKeyAuthenticator implements AuthenticatorInterface
          */
         if (!ObjectHelper::implementsInterface($credentials, TokenInterface::class)) {
             throw new \InvalidArgumentException(
-                sprintf("The instance must implement the interface %s", TokenInterface::class)
+                \sprintf("The instance must implement the interface %s", TokenInterface::class)
             );
         }
 

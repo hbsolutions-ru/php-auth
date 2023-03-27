@@ -2,6 +2,8 @@
 
 namespace HBS\Auth\Authenticator;
 
+use RuntimeException;
+
 use Psr\Log\{LoggerInterface, NullLogger};
 use HBS\Helpers\ObjectHelper;
 use HBS\Auth\{
@@ -22,9 +24,9 @@ class UsernamePasswordAuthenticator implements AuthenticatorInterface
 
     protected string $identityDomain;
 
-    protected LoggerInterface $logger;
-
     protected HmacSettings $hmacSettings;
+
+    protected LoggerInterface $logger;
 
     public function __construct(
         AccountToIdentityInterface $accountMapper,
@@ -48,15 +50,15 @@ class UsernamePasswordAuthenticator implements AuthenticatorInterface
          */
         if (!ObjectHelper::implementsInterface($credentials, UsernamePasswordInterface::class)) {
             throw new \InvalidArgumentException(
-                sprintf("The instance must implement the interface %s", UsernamePasswordInterface::class)
+                \sprintf("The instance must implement the interface %s", UsernamePasswordInterface::class)
             );
         }
 
         try {
             $account = $this->accountRepository->getByUsername($credentials->getUsername());
-        } catch (\RuntimeException $e) {
+        } catch (RuntimeException $e) {
             // User not found by name or something went wrong
-            $this->logger->debug(sprintf(
+            $this->logger->debug(\sprintf(
                 "[UsernamePasswordAuthenticator] Failed to retrieve user: %s",
                 $e->getMessage()
             ));
@@ -64,9 +66,9 @@ class UsernamePasswordAuthenticator implements AuthenticatorInterface
             throw new AuthenticationException("Wrong credentials");
         }
 
-        $peppered = hash_hmac($this->hmacSettings->algorithm, $credentials->getPassword(), $this->hmacSettings->secret);
+        $peppered = \hash_hmac($this->hmacSettings->algorithm, $credentials->getPassword(), $this->hmacSettings->secret);
 
-        $success = password_verify($peppered, $account->getPasswordHash());
+        $success = \password_verify($peppered, $account->getPasswordHash());
 
         if (!$success) {
             throw new AuthenticationException("Wrong credentials");

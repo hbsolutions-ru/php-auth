@@ -65,19 +65,19 @@ class BasicAuthorizationService implements WebAuthorizationServiceInterface
 
     protected function getCredentials(Request $request): UsernamePassword
     {
-        if (!preg_match("/Basic\s+(.*)$/i", $request->getHeaderLine("Authorization"), $matches)) {
+        if (!\preg_match("/Basic\s+(.*)$/i", $request->getHeaderLine("Authorization"), $matches)) {
             throw new AuthenticationException('Authentication data not found or is not in the correct format');
         }
 
-        $decodedMatch = base64_decode((string)$matches[1], true);
+        $decodedMatch = \base64_decode((string)$matches[1], true);
 
         if ($decodedMatch === false) {
             throw new AuthenticationException('Authentication data not found or is not in the correct format');
         }
 
-        $credentials = explode(":", $decodedMatch, 2);
+        $credentials = \explode(":", $decodedMatch, 2);
 
-        if (!count($credentials) == 2) {
+        if (!\count($credentials) == 2) {
             throw new AuthenticationException('Authentication data not found or is not in the correct format');
         }
 
@@ -99,7 +99,7 @@ class BasicAuthorizationService implements WebAuthorizationServiceInterface
      */
     public function unauthorized(?AuthenticationException $exception = null): Response
     {
-        $this->logger->notice(sprintf(
+        $this->logger->notice(\sprintf(
             "[%s] Authentication failed: %s",
             __CLASS__,
             $exception ? $exception->getMessage() : "Unknown error"
