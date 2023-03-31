@@ -76,17 +76,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/hbsolutions-ru/php-helpers.git",
-                "reference": "55c4877a932e5f8bdba0283bcd810938b094d134"
+                "reference": "1433cb8f1480da923918057edf0311ce42da22cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hbsolutions-ru/php-helpers/zipball/55c4877a932e5f8bdba0283bcd810938b094d134",
-                "reference": "55c4877a932e5f8bdba0283bcd810938b094d134",
+                "url": "https://api.github.com/repos/hbsolutions-ru/php-helpers/zipball/1433cb8f1480da923918057edf0311ce42da22cb",
+                "reference": "1433cb8f1480da923918057edf0311ce42da22cb",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
-                "php": "^7.3|^8"
+                "php": "^7.4|^8"
             },
             "require-dev": {
                 "phpunit/phpunit": "^9"
@@ -113,7 +113,7 @@
                 "issues": "https://github.com/hbsolutions-ru/php-helpers/issues",
                 "source": "https://github.com/hbsolutions-ru/php-helpers/tree/main"
             },
-            "time": "2022-08-29T15:35:27+00:00"
+            "time": "2023-03-31T19:04:24+00:00"
         },
         {
             "name": "hbsolutions/php-immutable",
@@ -808,12 +808,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "fe7b8ad5d2dd99abb89b2c5a094a2aac10119997"
+                "reference": "1eae16e6af7e03a13de8bf07d7d5209dff119465"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/fe7b8ad5d2dd99abb89b2c5a094a2aac10119997",
-                "reference": "fe7b8ad5d2dd99abb89b2c5a094a2aac10119997",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/1eae16e6af7e03a13de8bf07d7d5209dff119465",
+                "reference": "1eae16e6af7e03a13de8bf07d7d5209dff119465",
                 "shasum": ""
             },
             "require": {
@@ -878,7 +878,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-03-14T13:35:01+00:00"
+            "time": "2023-03-30T08:33:23+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -1127,12 +1127,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "07289f06e1d23f7fa50d10942de18f9d0f2063c2"
+                "reference": "d781fac3d8422eca72086c6e5b08fc04c76c6331"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/07289f06e1d23f7fa50d10942de18f9d0f2063c2",
-                "reference": "07289f06e1d23f7fa50d10942de18f9d0f2063c2",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/d781fac3d8422eca72086c6e5b08fc04c76c6331",
+                "reference": "d781fac3d8422eca72086c6e5b08fc04c76c6331",
                 "shasum": ""
             },
             "require": {
@@ -1222,7 +1222,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-03-19T14:12:15+00:00"
+            "time": "2023-03-30T08:23:00+00:00"
         },
         {
             "name": "ralouphie/getallheaders",
@@ -2074,12 +2074,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/resource-operations.git",
-                "reference": "e1157eac767e4dc4ae40dd9aab7fb4de6e56bd32"
+                "reference": "20bdda85c7c585ab265c0c37ec052a019bae29c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/resource-operations/zipball/e1157eac767e4dc4ae40dd9aab7fb4de6e56bd32",
-                "reference": "e1157eac767e4dc4ae40dd9aab7fb4de6e56bd32",
+                "url": "https://api.github.com/repos/sebastianbergmann/resource-operations/zipball/20bdda85c7c585ab265c0c37ec052a019bae29c4",
+                "reference": "20bdda85c7c585ab265c0c37ec052a019bae29c4",
                 "shasum": ""
             },
             "require": {
@@ -2121,7 +2121,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-02-08T06:53:39+00:00"
+            "time": "2023-03-25T08:11:39+00:00"
         },
         {
             "name": "sebastian/type",

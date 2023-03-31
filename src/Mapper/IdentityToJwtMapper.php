@@ -2,7 +2,7 @@
 
 namespace HBS\Auth\Mapper;
 
-use DateTime;
+use DateTimeImmutable;
 use Exception;
 use Firebase\JWT\JWT;
 use HBS\Helpers\{
@@ -39,7 +39,7 @@ class IdentityToJwtMapper implements IdentityToCredentialsInterface
         $iat = DateTimeHelper::now()->getTimestamp();
 
         // Expiration Time
-        $exp = (new DateTime('@' . ($iat + $this->settings->expiration)))->getTimestamp();
+        $exp = (new DateTimeImmutable('@' . ($iat + $this->settings->expiration)))->getTimestamp();
 
         $payload = [
             'jti' => $jti,

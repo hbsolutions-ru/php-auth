@@ -73,7 +73,10 @@ class BearerAuthorizationService implements WebAuthorizationServiceInterface
         }
 
         if (empty($bearer)) {
-            throw new AuthenticationException('Authentication data not found or is not in the correct format');
+            $errorMessage = "Authentication data not found or is not in the correct format";
+
+            $this->logger->debug(\sprintf("[%s] %s", __CLASS__, $errorMessage));
+            throw new AuthenticationException($errorMessage);
         }
 
         return new Token($bearer);
