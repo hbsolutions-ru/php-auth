@@ -9,6 +9,9 @@ use \DateTimeImmutable;
  */
 interface JwtInterface extends TokenInterface
 {
+    /**
+     * TODO: make constants final since PHP 8.1
+     */
     public const CLAIM_AUD = 'aud';
     public const CLAIM_EXP = 'exp';
     public const CLAIM_IAT = 'iat';
