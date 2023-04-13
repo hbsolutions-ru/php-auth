@@ -2,10 +2,7 @@
 
 namespace Tests\Service;
 
-use Slim\Psr7\Factory\{
-    RequestFactory,
-    ResponseFactory,
-};
+use GuzzleHttp\Psr7\HttpFactory;
 use PHPUnit\Framework\TestCase;
 use HBS\Auth\Authenticator\SecretKeyAuthenticator;
 use HBS\Auth\Exception\AuthenticationException;
@@ -25,10 +22,9 @@ final class SecretKeyAuthorizationServiceTest extends TestCase
             'userId' => $userId,
         ];
 
-        $requestFactory = new RequestFactory();
-        $responseFactory = new ResponseFactory();
+        $httpFactory = new HttpFactory();
 
-        $request = $requestFactory->createRequest('POST', 'http://localhost/')
+        $request = $httpFactory->createServerRequest('POST', 'http://localhost/')
             ->withHeader('Content-Type', 'application/json')
             ->withParsedBody($bodyData);
 
@@ -43,7 +39,7 @@ final class SecretKeyAuthorizationServiceTest extends TestCase
         $service = new SecretKeyAuthorizationService(
             $authenticator,
             $authorizer,
-            $responseFactory,
+            $httpFactory,
             'token'
         );
 
