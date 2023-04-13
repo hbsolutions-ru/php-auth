@@ -3,18 +3,15 @@
 namespace Tests\AuxiliaryClasses;
 
 use HBS\Auth\Mapper\ArrayToIdentityInterface;
+use HBS\Auth\Model\Credentials\JwtInterface;
 use HBS\Auth\Model\Identity\IdentityInterface;
 
-final class PayloadMapper implements ArrayToIdentityInterface
+final class JwtPayloadMapper implements ArrayToIdentityInterface
 {
     public function transform(array $payload, string $identityDomain): IdentityInterface
     {
-        $userId = isset($payload['data']) && is_array($payload['data'])
-            ? $payload['data']['id'] ?? 0
-            : $payload['userId'] ?? 0;
-
         $identity = new Identity(
-            intval($userId)
+            intval($payload[JwtInterface::CLAIM_SUB] ?? 0)
         );
 
         if ($identity->getDomain() !== $identityDomain) {

@@ -17,7 +17,7 @@ final class SecretKeyAuthenticatorTest extends TestCase
 
         $authenticator = new SecretKeyAuthenticator(
             new PayloadMapper(),
-            "TEST",
+            "test.domain.tld",
             $secretKey
         );
 

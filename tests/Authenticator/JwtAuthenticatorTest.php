@@ -5,10 +5,12 @@ namespace Tests\Authenticator;
 use PHPUnit\Framework\TestCase;
 use HBS\Auth\Authenticator\JwtAuthenticator;
 use HBS\Auth\Exception\AuthenticationException;
+use HBS\Auth\Factory\JwtFactory;
 use HBS\Auth\Immutable\JwtSettings;
-use HBS\Auth\Mapper\IdentityToJwtMapper;
+
 use Tests\AuxiliaryClasses\Identity;
-use Tests\AuxiliaryClasses\PayloadMapper;
+use Tests\AuxiliaryClasses\IdentityToJwtMapper;
+use Tests\AuxiliaryClasses\JwtPayloadMapper;
 
 final class JwtAuthenticatorTest extends TestCase
 {
@@ -18,13 +20,15 @@ final class JwtAuthenticatorTest extends TestCase
 
         $settings = new JwtSettings("HS256", 3600, "JwT-\$eCrEt-KeY");
 
+        $factory = new JwtFactory($settings);
+
         $authenticator = new JwtAuthenticator(
-            new PayloadMapper(),
-            "TEST",
+            new JwtPayloadMapper(),
+            "test.domain.tld",
             $settings
         );
 
-        $credentials = (new IdentityToJwtMapper($settings))->transform(new Identity($userId));
+        $credentials = (new IdentityToJwtMapper($factory))->transform(new Identity($userId));
 
         try {
             $identity = $authenticator->authenticate($credentials);

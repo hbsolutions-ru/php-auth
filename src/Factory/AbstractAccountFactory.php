@@ -10,7 +10,7 @@ use HBS\Auth\{
     Model\Credentials\UsernamePassword,
 };
 
-abstract class AbstractAccountFactory
+abstract class AbstractAccountFactory implements AccountFactoryInterface
 {
     protected HmacSettings $hmacSettings;
 
