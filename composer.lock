@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/firebase/php-jwt.git",
-                "reference": "705d6a3264aa2f742eccb92f7bf131ce56ebbad4"
+                "reference": "7970104a2cfd3228eee7c2cda5a1914c62e99ded"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/firebase/php-jwt/zipball/705d6a3264aa2f742eccb92f7bf131ce56ebbad4",
-                "reference": "705d6a3264aa2f742eccb92f7bf131ce56ebbad4",
+                "url": "https://api.github.com/repos/firebase/php-jwt/zipball/7970104a2cfd3228eee7c2cda5a1914c62e99ded",
+                "reference": "7970104a2cfd3228eee7c2cda5a1914c62e99ded",
                 "shasum": ""
             },
             "require": {
@@ -68,7 +68,7 @@
                 "issues": "https://github.com/firebase/php-jwt/issues",
                 "source": "https://github.com/firebase/php-jwt/tree/main"
             },
-            "time": "2023-04-05T21:00:14+00:00"
+            "time": "2023-05-04T00:52:43+00:00"
         },
         {
             "name": "hbsolutions/php-helpers",
@@ -76,12 +76,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/hbsolutions-ru/php-helpers.git",
-                "reference": "1433cb8f1480da923918057edf0311ce42da22cb"
+                "reference": "6891db3dff246bd98d9640ac00619fb0e1eea388"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hbsolutions-ru/php-helpers/zipball/1433cb8f1480da923918057edf0311ce42da22cb",
-                "reference": "1433cb8f1480da923918057edf0311ce42da22cb",
+                "url": "https://api.github.com/repos/hbsolutions-ru/php-helpers/zipball/6891db3dff246bd98d9640ac00619fb0e1eea388",
+                "reference": "6891db3dff246bd98d9640ac00619fb0e1eea388",
                 "shasum": ""
             },
             "require": {
@@ -113,7 +113,7 @@
                 "issues": "https://github.com/hbsolutions-ru/php-helpers/issues",
                 "source": "https://github.com/hbsolutions-ru/php-helpers/tree/main"
             },
-            "time": "2023-03-31T19:04:24+00:00"
+            "time": "2023-05-05T04:44:20+00:00"
         },
         {
             "name": "hbsolutions/php-immutable",
@@ -870,12 +870,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "db887088b40ae43d17b9913886df860a7035145d"
+                "reference": "565b4df47bb8992d1adbe06cb4c2e36df5517f54"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/db887088b40ae43d17b9913886df860a7035145d",
-                "reference": "db887088b40ae43d17b9913886df860a7035145d",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/565b4df47bb8992d1adbe06cb4c2e36df5517f54",
+                "reference": "565b4df47bb8992d1adbe06cb4c2e36df5517f54",
                 "shasum": ""
             },
             "require": {
@@ -940,7 +940,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-04-04T09:22:25+00:00"
+            "time": "2023-05-07T06:58:20+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -1189,12 +1189,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "0ef4d1f1d0590e1a68707bd4f3fb52d6a1c36b6b"
+                "reference": "4b4e628791a0a89f5a367beb03ba0c1d1fae4c6a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/0ef4d1f1d0590e1a68707bd4f3fb52d6a1c36b6b",
-                "reference": "0ef4d1f1d0590e1a68707bd4f3fb52d6a1c36b6b",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/4b4e628791a0a89f5a367beb03ba0c1d1fae4c6a",
+                "reference": "4b4e628791a0a89f5a367beb03ba0c1d1fae4c6a",
                 "shasum": ""
             },
             "require": {
@@ -1284,7 +1284,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-04-13T07:43:14+00:00"
+            "time": "2023-05-07T07:03:49+00:00"
         },
         {
             "name": "ralouphie/getallheaders",
@@ -1630,16 +1630,16 @@
         },
         {
             "name": "sebastian/diff",
-            "version": "4.0.4",
+            "version": "4.0.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/diff.git",
-                "reference": "3461e3fccc7cfdfc2720be910d3bd73c69be590d"
+                "reference": "74be17022044ebaaecfdf0c5cd504fc9cd5a7131"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/3461e3fccc7cfdfc2720be910d3bd73c69be590d",
-                "reference": "3461e3fccc7cfdfc2720be910d3bd73c69be590d",
+                "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/74be17022044ebaaecfdf0c5cd504fc9cd5a7131",
+                "reference": "74be17022044ebaaecfdf0c5cd504fc9cd5a7131",
                 "shasum": ""
             },
             "require": {
@@ -1684,7 +1684,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/diff/issues",
-                "source": "https://github.com/sebastianbergmann/diff/tree/4.0.4"
+                "source": "https://github.com/sebastianbergmann/diff/tree/4.0"
             },
             "funding": [
                 {
@@ -1692,7 +1692,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-10-26T13:10:38+00:00"
+            "time": "2023-05-07T05:35:17+00:00"
         },
         {
             "name": "sebastian/environment",

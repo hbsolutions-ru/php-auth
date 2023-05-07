@@ -1,16 +1,14 @@
 <?php declare(strict_types=1);
 
-namespace HBS\Auth\Factory;
+namespace HBS\Auth\Service\Utility;
 
 use Psr\Log\{LoggerInterface, NullLogger};
 use HBS\Auth\{
     Exception\EncryptionException,
     Immutable\HmacSettings,
-    Model\Account\AccountInterface,
-    Model\Credentials\UsernamePassword,
 };
 
-abstract class AbstractAccountFactory implements AccountFactoryInterface
+class PasswordHasher
 {
     protected HmacSettings $hmacSettings;
 
@@ -28,13 +26,12 @@ abstract class AbstractAccountFactory implements AccountFactoryInterface
         $this->logger = $logger ?? new NullLogger();
     }
 
-    abstract protected function createByUsernameAndPasswordHash(string $username, string $passwordHash): AccountInterface;
-
-    public function create(UsernamePassword $credentials): AccountInterface
+    // TODO: Since PHP 8.2 add "#[\SensitiveParameter] $password" for argument
+    public function get(string $password): string
     {
         $peppered = \hash_hmac(
             $this->hmacSettings->algorithm,
-            $credentials->getPassword(),
+            $password,
             $this->hmacSettings->secret,
         );
 
@@ -49,6 +46,6 @@ abstract class AbstractAccountFactory implements AccountFactoryInterface
             throw new EncryptionException('Failed to create account');
         }
 
-        return $this->createByUsernameAndPasswordHash($credentials->getUsername(), $hash);
+        return $hash;
     }
 }
